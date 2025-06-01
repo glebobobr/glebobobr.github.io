@@ -1,0 +1,136 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main {
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.main .div {
+    background-color: #1e1e1e;
+    width: 100%;
+    max-width: 1600px;
+    height: 100%;
+    max-height: 900px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.typewriter {
+    margin-bottom: 1rem;
+}
+
+.typewriter .glebobobr {
+    font-family: "JetBrains Mono";
+    font-weight: 500;
+    font-style: italic;
+    color: #6a9955;
+    font-size: 3vw;
+    letter-spacing: 0;
+    line-height: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #6a9955;
+    animation: typing 3s steps(22) forwards, blink 0.5s step-end infinite alternate;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.main .menu {
+    font-family: "JetBrains Mono";
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 2.5vw;
+    letter-spacing: 0;
+    line-height: 1.5;
+}
+
+.main .frame {
+    width: 40%;
+    height: 70%;
+    background-image: url(assets/img.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main .text-wrapper-2 {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "JetBrains Mono", Helvetica;
+    font-weight: 400;
+    color: #717171;
+    font-size: 1vw;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 8px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+    font-size: 24px;
+    color: #808080; /* Цвет иконки для темного режима по умолчанию */
+}
+
+/* Light mode */
+.light-mode .main,
+.light-mode .main .div {
+    background-color: #F5F5F5;
+}
+
+.light-mode .main .menu {
+    color: #222222;
+}
+
+.light-mode .material-symbols-outlined {
+    color: #808080;
+}
+
+/* Transition effects */
+.main,
+.main .div,
+.main .menu,
+.material-symbols-outlined {
+    transition: all 0.3s ease;
+}
