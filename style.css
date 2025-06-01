@@ -5,6 +5,13 @@ body, html {
     overflow: hidden;
 }
 
+:root {
+    --background-dark: #1E1E1E;
+    --text-dark: #FFFFFF;
+    --background-light: #F5F5F5;
+    --text-light: #222222;
+}
+
 .main {
     background-color: #1e1e1e;
     display: flex;
@@ -70,13 +77,31 @@ body, html {
     line-height: 1.5;
 }
 
-.main .frame {
+.menu-item {
+    display: block;
+    line-height: 1.5;
+}
+
+.image-container {
+    position: relative;
     width: 40%;
     height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .frame {
+    width: 400px;
+    height: 400px;
     background-image: url(assets/img.png);
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .main .text-wrapper-2 {
@@ -92,6 +117,7 @@ body, html {
     line-height: normal;
 }
 
+/* Стили для кнопки переключения */
 .mode-toggle {
     position: fixed;
     top: 20px;
@@ -101,36 +127,220 @@ body, html {
     cursor: pointer;
     z-index: 1000;
     padding: 8px;
+    width: 40px;
+    height: 40px;
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24;
-    font-size: 24px;
-    color: #808080; /* Цвет иконки для темного режима по умолчанию */
+/* Стили для иконок */
+.icon-light, .icon-dark {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
 }
 
-/* Light mode */
-.light-mode .main,
-.light-mode .main .div {
-    background-color: #F5F5F5;
+/* Темная тема (по умолчанию) */
+body {
+    background-color: var(--background-dark);
 }
 
-.light-mode .main .menu {
-    color: #222222;
+.main .menu {
+    color: var(--text-dark);
 }
 
-.light-mode .material-symbols-outlined {
-    color: #808080;
+.icon-light {
+    opacity: 0;
+    fill: var(--text-dark);
 }
 
-/* Transition effects */
+.icon-dark {
+    opacity: 1;
+    fill: var(--text-dark);
+}
+
+/* Светлая тема */
+body.light-theme {
+    background-color: var(--background-light);
+}
+
+body.light-theme .main,
+body.light-theme .main .div {
+    background-color: var(--background-light);
+}
+
+body.light-theme .main .menu {
+    color: var(--text-light);
+}
+
+body.light-theme .icon-light {
+    opacity: 1;
+    fill: var(--text-light);
+}
+
+body.light-theme .icon-dark {
+    opacity: 0;
+    fill: var(--text-light);
+}
+
+/* Эффекты перехода */
+body,
 .main,
 .main .div,
-.main .menu,
-.material-symbols-outlined {
+.main .menu {
     transition: all 0.3s ease;
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 1200px) {
+    .username-tag {
+        font-size: 32px;
+    }
+
+    .main .frame {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main .div {
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .content-wrapper {
+        width: 100%;
+        margin-bottom: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main .frame {
+        width: 70%;
+        height: 40%;
+        order: 2;
+    }
+
+    .typewriter .glebobobr {
+        font-size: 6vw;
+    }
+
+    .main .menu {
+        font-size: 5vw;
+    }
+
+    .main .text-wrapper-2 {
+        font-size: 3vw;
+        bottom: 0.5rem;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .main .div {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .main .frame {
+        order: 2;
+    }
+}
+
+/* Обновленный медиа-запрос для мобильных устройств */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .main {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+
+    .main .div {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 1rem;
+        height: auto;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+
+    .content-wrapper {
+        order: 1;
+        width: 100%;
+        margin-bottom: 2rem;
+        align-items: flex-start; /* Выравнивание по левому краю */
+        text-align: left; /* Текст по левому краю */
+    }
+
+    .image-container {
+        order: 2;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        margin: 2rem 0;
+    }
+
+    .main .frame {
+        width: 70vw;
+        height: 70vw;
+        max-width: 300px;
+        max-height: 300px;
+        margin: 0 auto;
+    }
+
+    .username-tag {
+        position: relative;
+        right: auto;
+        top: auto;
+        margin: -20px auto 0;
+        transform: none;
+        width: max-content;
+    }
+
+    .main .text-wrapper-2 {
+        order: 3;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: auto;
+        text-align: center;
+        width: 100%;
+        font-size: 14px !important;
+        margin-bottom: 1rem;
+    }
+
+    .typewriter .glebobobr {
+        font-size: 6vw;
+        text-align: left;
+    }
+
+    .main .menu {
+        font-size: 5vw;
+        text-align: left;
+    }
+}
+
+/* Гарантируем одинаковый размер текста */
+@media screen and (max-width: 480px) {
+    .typewriter .glebobobr,
+    .main .menu {
+        font-size: 24px !important; /* Фиксированный размер */
+    }
+
+    .main .frame {
+        width: 80vw;
+        height: 80vw;
+    }
+}
+
+@media screen and (orientation: portrait) {
 }
