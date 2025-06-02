@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.querySelector('.mode-toggle');
     const body = document.body;
+    const htmlElement = document.documentElement;
     const iconLight = document.querySelector('.icon-light');
     const iconDark = document.querySelector('.icon-dark');
+
+    // Удаляем класс предварительной загрузки
+    htmlElement.classList.remove('preload-light-theme');
 
     // Проверка сохранённой темы в localStorage
     const savedTheme = localStorage.getItem('theme');

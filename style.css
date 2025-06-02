@@ -77,6 +77,22 @@ body, html {
     line-height: 1.5;
 }
 
+.menu a {
+    font-family: "JetBrains Mono";
+    font-weight: 400;
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    display: block;
+    line-height: 1.5;
+    transition: text-decoration 0.3s ease;
+}
+
+/* При наведении подчеркиваем только текст внутри span.link-text */
+.menu a:hover .link-text {
+    text-decoration: underline;
+}
+
 .menu-item {
     display: block;
     line-height: 1.5;

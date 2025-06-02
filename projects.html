@@ -7,32 +7,71 @@
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=dark_mode,light_mode" />
+    <style>
+        .projects-title {
+            display: flex;
+            align-items: center;
+            font-family: "JetBrains Mono";
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 2.5vw;
+            letter-spacing: 0;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        body.light-theme .projects-title {
+            color: var(--text-light);
+        }
+
+        .back-link {
+            font-family: "JetBrains Mono";
+            font-weight: 400;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        body.light-theme .back-link {
+            color: var(--text-light);
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 480px) {
+            .projects-title {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('preload-light-theme');
+            }
+        })();
+    </script>
 </head>
 <body>
 <div class="main">
     <div class="div">
         <div class="content-wrapper">
-            <div class="typewriter">
-                <p class="glebobobr">
-                    <span class="text-wrapper">//Привет, я glebobobr!</span>
-                </p>
+            <div class="projects-title">
+                <a href="index.html" class="back-link">&lt;</a>
+                <span>Проекты</span>
             </div>
             <p class="menu">
-                <a href="aboutme.html" class="menu-item">
-                    &gt; <span class="link-text">Обо мне</span>
-                </a>
-                <a href="skills.html" class="menu-item">
-                    &gt; <span class="link-text">Навыки</span>
-                </a>
-                <a href="projects.html" class="menu-item">
-                    &gt; <span class="link-text">Проекты</span>
-                </a>
-                <a href="contacts.html" class="menu-item">
-                    &gt; <span class="link-text">Контакты</span>
-                </a>
+                <span class="span">
+                    <a href="https://github.com/glebobobr/GOLF" class="menu-item">
+                        <span class="link-text">GOLF</span> на unity
+                    </a>
+                </span>
             </p>
         </div>
-        <div class="frame"></div>
         <div class="text-wrapper-2">©бебабоба 2025</div>
     </div>
 </div>
